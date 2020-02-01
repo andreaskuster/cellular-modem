@@ -1,2 +1,2 @@
-# Cellular Modem
+# Cellular Modem [![Build Status](https://travis-ci.com/andreaskuster/cellular-modem.svg?branch=master)](https://travis-ci.com/andreaskuster/cellular-modem) [![Coverage Status](https://coveralls.io/repos/github/andreaskuster/cellular-modem/badge.svg?branch=master&t=DPZsaq)](https://coveralls.io/github/andreaskuster/cellular-modem?branch=master)  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 dummy text
