@@ -9,4 +9,4 @@ class Dummy(unittest.TestCase):
 
 if __name__ == "__main__":
     # run all tests
-    unittest.main()
+    unittest.main()  # pragma: no cover
