@@ -14,11 +14,15 @@ setuptools.setup(
     url="https://github.com/andreaskuster/cellular-modem",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8"
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Development Status :: 3 - Alpha",
         "Natural Language :: English"
     ],
-    python_requires='>=3.0',
+    python_requires='>=3.4',
 )
