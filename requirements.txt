@@ -1,4 +1,2 @@
-unittest
-setuptools
 coverage
 coveralls
