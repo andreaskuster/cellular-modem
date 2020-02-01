@@ -1,0 +1,4 @@
+unittest
+setuptools
+coverage
+coveralls
