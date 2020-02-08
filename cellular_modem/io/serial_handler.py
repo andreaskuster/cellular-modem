@@ -11,6 +11,7 @@ class SerialHandler:
         self.serial = None
         self.polling_interval = 0.01
         self.polling_enabled = False
+        self.polling_thread_die = False
         # create background polling thread
         self.polling_thread = threading.Thread(target=self.poll)
         self.polling_thread.start()
@@ -36,6 +37,10 @@ class SerialHandler:
         self.polling_enabled = True
 
     def close(self):
+        # indicate polling thread to exit
+        self.polling_thread_die = True
+        # wait for thread to exit
+        self.polling_thread.join()
         # acquire serial lock
         with self.lock:
             # close connection
@@ -45,7 +50,7 @@ class SerialHandler:
 
     def poll(self):
         # check for new data
-        while True:
+        while not self.polling_thread_die:
             # check if polling is enabled
             if self.polling_enabled:
                 # acquire lock
@@ -94,22 +99,24 @@ class SerialHandler:
             return self.serial.readline()
 
     def data_received(self, data):
-        pass
+        print("data reveiced event")
 
     def connection_made(self):
-        pass
+        print("connection made event")
 
     def connection_lost(self):
-        pass
+        print("connection lost event")
 
 
 if __name__ == "__main__":
     # instantiate handler
     handler = SerialHandler()
     # open the serial port
-    handler.open("COM0", 9600)  # loopback device
-    if handler.write_read_atomic_blocking("Hello World!") == "Hello World!":
+    handler.open("/dev/pts/2", 9600)  # loopback device
+    if handler.write_read_atomic_blocking("Hello World!\n") == handler.to_bytes("Hello World!\n"):
         print("Successful!")
+    # let the connection open for another 60 seconds.
+    time.sleep(60)
     # close serial
     handler.close()
 
