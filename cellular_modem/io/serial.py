@@ -5,7 +5,7 @@ import time
 
 class SerialHandler:
 
-    def __init__(self):
+    def __init__(self, **kwds):
         # init internal parameters
         self.lock = threading.Lock()
         self.serial = None
@@ -120,4 +120,5 @@ if __name__ == "__main__":
         catch all sort of exceptions
         add testing
         add function description
+        add verbose level system
 """
