@@ -39,7 +39,7 @@ class SerialHandler:
     def __init__(self, **kwds):
         # init internal parameters
         self.lock = threading.Lock()
-        self.serial = None
+        self.serial: serial.Serial = None
         self.polling_interval = 0.01
         self.polling_enabled = False
         self.polling_thread_die = False
@@ -87,9 +87,9 @@ class SerialHandler:
                 # acquire lock
                 with self.lock:
                     # check if data is available
-                    if self.serial.inWaiting() > 0:
+                    if self.serial.in_waiting > 0:
                         # read all available data and call data_received event
-                        self.data_received(data=self.serial.read(self.serial.inWaiting()))
+                        self.data_received(data=self.serial.read(self.serial.in_waiting))
             # sleep for polling_interval seconds
             time.sleep(self.polling_interval)
 
@@ -108,7 +108,7 @@ class SerialHandler:
         with self.lock:
             self.serial.write(SerialHandler.to_bytes(data))
             if blocking:
-                while self.serial.outWaiting() > 0:
+                while self.serial.out_waiting > 0:
                     time.sleep(self.polling_interval)
 
     def read(self, blocking=True):
@@ -119,18 +119,26 @@ class SerialHandler:
                 return self.serial.readline()
             else:
                 # read all available data
-                return self.serial.read(self.serial.inWaiting())
+                return self.serial.read(self.serial.in_waiting)
 
-    def write_read_atomic_blocking(self, data):
+    def write_read_atomic_blocking(self, data, no_lines=1):
         # acquire serial lock
         with self.lock:
             # write data
             self.serial.write(SerialHandler.to_bytes(data))
             # wait for response
-            return self.serial.readline()
+            if no_lines > 1:
+                response = list()
+                for i in range(no_lines):
+                    response.append(self.serial.readline())
+                return response
+            elif no_lines == 1:
+                return self.serial.readline()
+            else:
+                raise RuntimeError("Unable to read {} lines".format(no_lines))
 
     def data_received(self, data):
-        print("data reveiced event")
+        print("data reveiced event: {}".format(data))
 
     def connection_made(self):
         print("connection made event")
@@ -143,6 +151,18 @@ if __name__ == "__main__":
     # instantiate handler
     handler = SerialHandler()
     # open the serial port
+    handler.open("/dev/ttyUSB0", 19200)
+    # ping modem: AT -> AT OK
+    print(handler.write_read_atomic_blocking("AT\n", no_lines=2))
+    # let the connection open for another 60 seconds.
+    time.sleep(10)
+    # close serial
+    handler.close()
+
+    """
+    # instantiate handler
+    handler = SerialHandler()
+    # open the serial port
     handler.open("/dev/pts/2", 9600)  # loopback device
     if handler.write_read_atomic_blocking("Hello World!\n") == handler.to_bytes("Hello World!\n"):
         print("Successful!")
@@ -150,7 +170,7 @@ if __name__ == "__main__":
     time.sleep(60)
     # close serial
     handler.close()
-
+    """
 
 """
     Todo:
