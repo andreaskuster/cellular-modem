@@ -179,4 +179,6 @@ if __name__ == "__main__":
         add testing
         add function description
         add verbose level system
+        autodetect port
+        platform specific code (i.e. differ between linux/windows)
 """
