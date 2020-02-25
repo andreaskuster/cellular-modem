@@ -103,6 +103,11 @@ class SerialHandler:
             # encode string using utf-8
             return data.encode("utf-8")
 
+    @staticmethod
+    def available_ports():
+        import serial.tools.list_ports
+        return [port.device for port in serial.tools.list_ports.comports()]
+
     def write(self, data, blocking=True):
         # acquire serial lock
         with self.lock:
@@ -151,7 +156,8 @@ if __name__ == "__main__":
     # instantiate handler
     handler = SerialHandler()
     # open the serial port
-    handler.open("/dev/ttyUSB0", 19200)
+    # handler.open("/dev/ttyUSB0", 19200)
+    handler.open("COM3", 19200)
     # ping modem: AT -> AT OK
     print(handler.write_read_atomic_blocking("AT\n", no_lines=2))
     # let the connection open for another 60 seconds.
