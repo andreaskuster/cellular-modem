@@ -181,4 +181,5 @@ if __name__ == "__main__":
         add verbose level system
         autodetect port
         platform specific code (i.e. differ between linux/windows)
+        todo clean messages from artifacts (such as \n, \r, ..)
 """
