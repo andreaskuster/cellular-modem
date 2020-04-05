@@ -1,0 +1,29 @@
+{
+	"2g": {
+		"apn": "internet.eplus.de",
+		"username": "eplus",
+		"password": "internet",
+		"apn-type": "default, sulp"
+
+	},
+	"3g": {
+		"apn": "internet.eplus.de",
+		"username": "eplus",
+		"password": "internet",
+		"apn-type": "default, sulp"
+
+	},
+	"4g": {
+		"apn": "internet.eplus.de",
+		"username": "eplus",
+		"password": "internet",
+		"apn-type": "default, sulp"
+
+	},
+	"mms": {
+		"apn": "mms.eplus.de",
+		"username": "mms",
+		"password": "internet",
+		"apn-type": "mms"
+	}
+}
