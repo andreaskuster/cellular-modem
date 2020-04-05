@@ -1,0 +1,26 @@
+{
+	"2g": {
+		"apn": "epc.tmobile.com",
+		"username": "",
+		"password": "",
+		"apn-type": "default,supl,mms"
+	},
+	"3g": {
+		"apn": "epc.tmobile.com",
+		"username": "",
+		"password": "",
+		"apn-type": "default,supl,mms"
+	},
+	"4g": {
+		"apn": "fast.tmobile.com",
+		"username": "",
+		"password": "",
+		"apn-type": "default,supl,mms"
+	},
+	"mms": {
+		"apn": "epc.tmobile.com",
+		"username": "",
+		"password": "",
+		"apn-type": "default,supl,mms"
+	}
+}
