@@ -29,8 +29,8 @@ __author__ = "Andreas Kuster"
 __copyright__ = "Copyright 2020, cellular-modem, Andreas Kuster"
 __license__ = "MIT"
 
-from cellular_modem.abstract_modem import AbstractModem
-from cellular_modem.io.serial_handler import SerialHandler
+from cellular_modem import AbstractModem
+from cellular_modem.io import SerialHandler
 
 
 class SIM800(AbstractModem, SerialHandler):
