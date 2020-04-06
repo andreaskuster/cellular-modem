@@ -22,5 +22,11 @@
 		"username": "mms",
 		"password": "mms",
 		"apn-type": "mms"
+	},
+	"wap": {
+		"apn": "wap.sunrise.ch",
+		"username": "wap",
+		"password": "wap",
+		"apn-type": "wap"
 	}
 }
