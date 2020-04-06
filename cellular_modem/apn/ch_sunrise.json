@@ -1,0 +1,26 @@
+{
+	"2g": {
+		"apn": "internet",
+		"username": "",
+		"password": "",
+		"apn-type": "default"
+	},
+	"3g": {
+		"apn": "internet",
+		"username": "",
+		"password": "",
+		"apn-type": "default"
+	},
+	"4g": {
+		"apn": "internet",
+		"username": "",
+		"password": "",
+		"apn-type": "default"
+	},
+	"mms": {
+		"apn": "mms.sunrise.ch",
+		"username": "mms",
+		"password": "mms",
+		"apn-type": "mms"
+	}
+}
