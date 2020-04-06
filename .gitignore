@@ -1,0 +1,2 @@
+/cellular_modem/sim/*.json
+!/cellular_modem/sim/template.json
