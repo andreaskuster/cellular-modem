@@ -1,0 +1,26 @@
+{
+	"2g": {
+		"apn": "gprs.swisscom.ch",
+		"username": "",
+		"password": "",
+		"apn-type": "default"
+	},
+	"3g": {
+		"apn": "gprs.swisscom.ch",
+		"username": "",
+		"password": "",
+		"apn-type": "default"
+	},
+	"4g": {
+		"apn": "gprs.swisscom.ch",
+		"username": "",
+		"password": "",
+		"apn-type": "default"
+	},
+	"mms": {
+		"apn": "event.swisscom.ch",
+		"username": "mms",
+		"password": "mms",
+		"apn-type": "mms"
+	}
+}
